@@ -10,6 +10,39 @@
 * Chat on Discord: https://discord.gg/sgak4e5NKv
 * License summary: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)
 
-## About this plugin
+## Javalin Redis
 
-Add stuff here
+The plugin enables [Redis](https://redis.io/) operations in a few simple steps, all based on [Jedis](https://github.com/redis/jedis).
+
+### Getting Started
+
+Add the dependencies:
+
+```
+It's not ready yet.
+```
+
+Register the plugin:
+
+```java
+Javalin.create(app -> {
+    app.registerPlugin(new RedisPlugin((redisConfig) -> {
+        redisConfig.setHost("127.0.0.1");
+        redisConfig.setPort(6379);
+    }));
+}).start(7070);
+```
+
+### Execute
+
+Use `RedisTemplate.getInstance()` to get the instance to call Jedis functions.
+
+Note that all Jedis functions need to be called via `execute()`.
+
+```java
+RedisTemplate.getInstance().execute((jedis) -> jedis.set("hello", "hello world"));
+
+String executed = RedisTemplate.getInstance().execute((jedis) -> jedis.get("hello"));
+```
+
+All methods are thread-safe and JedisPool is also automatically destroyed based on Javalin's shutdown.
