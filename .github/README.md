@@ -19,7 +19,11 @@ The plugin enables [Redis](https://redis.io/) operations in a few simple steps, 
 Add the dependencies:
 
 ```
-It's not ready yet.
+<dependency>
+    <groupId>io.github.wuujiawei</groupId>
+    <artifactId>javalin-redis-plugin</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
 Register the plugin:
